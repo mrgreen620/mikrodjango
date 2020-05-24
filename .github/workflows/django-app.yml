@@ -22,7 +22,7 @@ jobs:
         # Сначала мы логинимся в docker.io#      
       run:  echo ${{ secrets.DOCKER_PWD }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
     - name: build docker
-      run: docker build -t $LOGIN/$NAME:${GITHUB_REF:11} -f Dockerfile .
+      run: docker build -t $LOGIN/$NAME:${{ github.sha }} -f Dockerfile .
     - name: watch files
       run: ls -l
     - name: show docker image
@@ -31,7 +31,7 @@ jobs:
       run: sudo chown -R $USER:$USER .
     - name: Push image to docker.io
           # Пушим образ в registry
-      run: docker push $LOGIN/$NAME:${GITHUB_REF:11}
+      run: docker push $LOGIN/$NAME:${{ github.sha }}
 
 
 
