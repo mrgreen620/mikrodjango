@@ -1,5 +1,15 @@
 from django.http import HttpResponse
 
+# Create your views here.
+def home_page(request):
+    return HttpResponse('<html><title>To-Do lists</title><h1>Привет, мир</h1></html>')
 
-def index(request):
-    return HttpResponse("Привет, мир")
+
+
+
+
+# def home_page():
+#     pass
+
+# def index(request):
+#     return HttpResponse("Привет, мир")
